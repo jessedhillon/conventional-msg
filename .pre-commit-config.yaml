@@ -1,9 +1,18 @@
 repos:
   - repo: .
-    rev: b2323c7d4aee770399418592a1a5ec790e00b968
+    rev: 50fd316f271eaf508d5787bd94d4c31e7329b699
     hooks:
       - id: conventional-msg
         name: conventional commit message
         entry: conventional-msg
         language: python
         stages: [commit-msg]
+  - repo: local
+    hooks:
+    - id: pytest
+      name: pytest
+      entry: .venv/bin/pytest
+      language: script
+      pass_filenames: false
+      always_run: true
+      stages: [pre-commit]
