@@ -52,6 +52,7 @@ does not obey conventional commit format:
     else:
         if areas is None and type_ not in rules.allow_no_area:
             warn(f"area is required for {type_!r} type")
+            return False
         elif areas is not None:
             ls_areas = areas.split(",")
             for area in ls_areas:

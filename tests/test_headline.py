@@ -41,9 +41,7 @@ def test_invalid_type(warn_collector, default_config):
 def test_area_required_for_feat(warn_collector, default_config):
     warn, msgs = warn_collector
     msg = make_msg("feat: add widgets support")
-    # NOTE: your current code *warns* but does not return False.
-    # This test encodes current behavior; change it if you later make it strict.
-    assert validate_headline(msg, warn, default_config) is True
+    assert validate_headline(msg, warn, default_config) is False
     assert any("area is required" in m for m in msgs)
 
 
