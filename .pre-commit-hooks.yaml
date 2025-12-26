@@ -1,5 +1,6 @@
 - id: conventional-msg
-  name: Conventional commit message linter
+  name: lint conventional commit messages
+  description: "enforces a modified conventional commit format: type(area[,...])[!]: [{tag}] message"
   entry: conventional-msg
   language: python
   stages: [commit-msg]
