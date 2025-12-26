@@ -64,14 +64,14 @@ def test_areas_must_be_sorted(warn_collector):
 
 def test_tag_valid(warn_collector, default_config):
     warn, msgs = warn_collector
-    msg = make_msg("fix(core)!: [tests-failing] handle edge-case properly")
+    msg = make_msg("fix(core)!: {tests-failing} handle edge-case properly")
     assert validate_headline(msg, warn, default_config) is True
     assert msgs == []
 
 
 def test_tag_invalid(warn_collector, default_config):
     warn, msgs = warn_collector
-    msg = make_msg("fix(core)!: [lol] handle edge-case properly")
+    msg = make_msg("fix(core)!: {lol} handle edge-case properly")
     assert validate_headline(msg, warn, default_config) is False
     assert any("not a valid tag" in m for m in msgs)
 
