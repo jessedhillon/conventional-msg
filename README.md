@@ -110,11 +110,17 @@ Add to the `repos` list in `.pre-commit-config.yaml`
 
 ```
 - repo: https://github.com/jessedhillon/conventional-msg
-  rev: "0.1"
+  rev: "0.1.1"
   hooks:
     - id: conventional-msg
       name: conventional commit message
       entry: conventional-msg
       language: python
       stages: [commit-msg]
+```
+
+In your repo, make sure to install the `commit-msg` hook specifically, which is not installed by default:
+
+```
+pre-commit install --hook-type commit-msg
 ```

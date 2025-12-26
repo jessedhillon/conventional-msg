@@ -1,6 +1,6 @@
 repos:
   - repo: .
-    rev: '0.1'
+    rev: d67a0fb
     hooks:
       - id: conventional-msg
         stages: [commit-msg]
