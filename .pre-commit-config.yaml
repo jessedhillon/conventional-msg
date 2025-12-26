@@ -1,0 +1,9 @@
+repos:
+  - repo: .
+    rev: 26b0d1f835cd0abf966aefd0ecb821fb51dda91b
+    hooks:
+      - id: conventional-msg
+        name: Conventional commit linter
+        entry: conventional-msg
+        language: python
+        stages: [commit-msg]
