@@ -50,7 +50,7 @@ does not obey conventional commit format:
         if not check_revision(areas, warn):
             return False
     else:
-        if areas is None and type_ not in rules.allow_no_area:
+        if areas is None and type_ not in rules.allow_omit_area:
             warn(f"area is required for {type_!r} type")
             return False
         elif areas is not None:

@@ -33,7 +33,6 @@ DefaultTags = {
 }
 DefaultArealess = {
     "docs",
-    "revise",
     "wip",
 }
 
@@ -69,7 +68,7 @@ class MessageRules(p.BaseModel):
     tags: set[str] = p.Field(default_factory=DefaultTags.copy)
     branch: str = p.Field(default="master")
     revise_name: str = p.Field(default="revise")
-    allow_no_area: set[str] = p.Field(default_factory=DefaultArealess.copy)
+    allow_omit_area: set[str] = p.Field(default_factory=DefaultArealess.copy)
 
     @classmethod
     def from_pyproject(cls, repo_root: Path, key: str = "conventional-msg") -> MessageRules:

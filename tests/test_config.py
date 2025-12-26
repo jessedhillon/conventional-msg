@@ -18,7 +18,7 @@ def test_defaults_when_no_pyproject(tmp_path: Path):
     assert rules.areas == set(DefaultAreas)
     assert rules.types == set(DefaultTypes)
     assert rules.tags == set(DefaultTags)
-    assert rules.allow_no_area == set(DefaultArealess)
+    assert rules.allow_omit_area == set(DefaultArealess)
     assert rules.branch == "master"
     assert rules.revise_name == "revise"
 
