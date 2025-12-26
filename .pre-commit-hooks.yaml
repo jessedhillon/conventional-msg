@@ -1,5 +1,5 @@
 - id: conventional-msg
-  name: lint conventional commit messages
+  name: conventional commit message
   description: "enforces a modified conventional commit format: type(area[,...])[!]: [{tag}] message"
   entry: conventional-msg
   language: python

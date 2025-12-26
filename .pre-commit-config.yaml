@@ -1,11 +1,8 @@
 repos:
   - repo: .
-    rev: 50fd316f271eaf508d5787bd94d4c31e7329b699
+    rev: '0.1'
     hooks:
       - id: conventional-msg
-        name: conventional commit message
-        entry: conventional-msg
-        language: python
         stages: [commit-msg]
   - repo: local
     hooks:
