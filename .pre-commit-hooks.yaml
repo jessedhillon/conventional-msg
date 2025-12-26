@@ -1,0 +1,5 @@
+- id: conventional-msg
+  name: Conventional commit message linter
+  entry: conventional-msg
+  language: python
+  stages: [commit-msg]

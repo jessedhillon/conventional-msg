@@ -1,0 +1,57 @@
+[project]
+name = "conventional_msg"
+version = "0.0.1"
+description = "commit-msg hook for linting conventional commit messages"
+authors = [
+    { name = "Jesse Dhillon", email = "<jesse@dhillon.com>" },
+]
+package-mode = true
+
+[project.scripts]
+conventional-msg = "conventional_msg.__main__:main"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pydantic = "^2.12.5"
+
+[tool.poetry.extras]
+dev = []
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+ruff = "*"
+pyright = "*"
+types-setuptools = "*"
+
+[tool.ruff]
+line-length = 120
+lint.select = [ "E", "F", "B", "T" ]
+lint.extend-ignore = [
+    "I",
+    "B008"  # calling function in parameter list
+]
+preview = true
+target-version = "py313"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.conventional-msg]
+areas = [
+    "all",
+    "cli",
+    "config",
+    "core",
+    "dev",
+    "lib",
+    "migrations",
+    "model",
+    "tests",
+    "typings",
+    "web",
+]
