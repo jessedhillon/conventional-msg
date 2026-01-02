@@ -1,6 +1,6 @@
 [project]
 name = "conventional_msg"
-version = "0.0.2"
+version = "0.2.0"
 description = "commit-msg hook for linting conventional commit messages"
 authors = [
     { name = "Jesse Dhillon", email = "<jesse@dhillon.com>" },
