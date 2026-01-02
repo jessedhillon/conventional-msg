@@ -55,10 +55,11 @@ does not obey conventional commit format:
             return False
         elif areas is not None:
             ls_areas = areas.split(",")
-            for area in ls_areas:
-                if area not in rules.areas:
-                    warn(f"{area!r} is not a valid area: {rules.areas!r}")
-                    return False
+            if rules.validate_areas:
+                for area in ls_areas:
+                    if area not in rules.areas:
+                        warn(f"{area!r} is not a valid area: {rules.areas!r}")
+                        return False
             if ls_areas != sorted(ls_areas):
                 warn("areas must be alphabetically sorted")
                 return False

@@ -63,12 +63,16 @@ class MessageRules(p.BaseModel):
         "extra": "forbid",
     }
     min_len: int = p.Field(default=8)
-    areas: set[str] = p.Field(default_factory=DefaultAreas.copy)
+    areas: set[str] | None = p.Field(default=None)
     types: set[str] = p.Field(default_factory=DefaultTypes.copy)
     tags: set[str] = p.Field(default_factory=DefaultTags.copy)
     branch: str = p.Field(default="master")
     revise_name: str = p.Field(default="revise")
     allow_omit_area: set[str] = p.Field(default_factory=DefaultArealess.copy)
+
+    @property
+    def validate_areas(self) -> bool:
+        return self.areas is not None
 
     @classmethod
     def from_pyproject(cls, repo_root: Path, key: str = "conventional-msg") -> MessageRules:

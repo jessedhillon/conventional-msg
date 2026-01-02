@@ -5,7 +5,7 @@ import pytest
 
 import pydantic as p
 
-from conventional_msg.config import MessageRules, DefaultAreas, DefaultTypes, DefaultTags, DefaultArealess
+from conventional_msg.config import MessageRules, DefaultTypes, DefaultTags, DefaultArealess
 
 
 def write_pyproject(tmp: Path, body: str) -> None:
@@ -15,7 +15,7 @@ def write_pyproject(tmp: Path, body: str) -> None:
 def test_defaults_when_no_pyproject(tmp_path: Path):
     rules = MessageRules.from_pyproject(tmp_path)
     assert rules.min_len == 8
-    assert rules.areas == set(DefaultAreas)
+    assert rules.areas is None
     assert rules.types == set(DefaultTypes)
     assert rules.tags == set(DefaultTags)
     assert rules.allow_omit_area == set(DefaultArealess)
@@ -37,7 +37,7 @@ types = ["feat", "fix"]
     assert rules.min_len == 12
     assert rules.branch == "main"
     assert rules.types == {"feat", "fix"}
-    assert rules.areas == set(DefaultAreas)
+    assert rules.areas is None
 
 
 def test_set_fields_are_deduped(tmp_path: Path):

@@ -45,10 +45,11 @@ def test_area_required_for_feat(warn_collector, default_config):
     assert any("area is required" in m for m in msgs)
 
 
-def test_invalid_area(warn_collector, default_config):
+def test_invalid_area(warn_collector):
     warn, msgs = warn_collector
+    config = MessageRules(areas={"core", "lib"})
     msg = make_msg("feat(nope): add widgets support")
-    assert validate_headline(msg, warn, default_config) is False
+    assert validate_headline(msg, warn, config) is False
     assert any("not a valid area" in m for m in msgs)
 
 
@@ -57,6 +58,22 @@ def test_areas_must_be_sorted(warn_collector):
     config = MessageRules(areas=DefaultAreas | {"web"})
     msg = make_msg("feat(web,cli): add widgets support")
     assert validate_headline(msg, warn, config) is False
+    assert any("alphabetically sorted" in m for m in msgs)
+
+
+def test_any_area_accepted_when_areas_is_none(warn_collector, default_config):
+    """When areas is None, any area name should be accepted."""
+    warn, msgs = warn_collector
+    msg = make_msg("feat(arbitrary-area): add widgets support")
+    assert validate_headline(msg, warn, default_config) is True
+    assert msgs == []
+
+
+def test_areas_must_be_sorted_even_when_areas_is_none(warn_collector, default_config):
+    """Sorting is enforced even when areas is None (no membership validation)."""
+    warn, msgs = warn_collector
+    msg = make_msg("feat(zebra,alpha): add widgets support")
+    assert validate_headline(msg, warn, default_config) is False
     assert any("alphabetically sorted" in m for m in msgs)
 
 
